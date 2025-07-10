@@ -1,0 +1,593 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f2a6c4, #fdf2f8, #ffffff);
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.love-letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 240px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  padding: 20px;
+}
+
+.heart {
+  font-size: 4rem;
+  color: #e74c3c;
+  animation: heartbeat 1.5s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
+}
+
+.birthday-title {
+  font-size: 1.2rem;
+  color: #d63384;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Brush Script MT', cursive, Arial, sans-serif;
+  animation: gentleGlow 2s ease-in-out infinite;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.from-signature {
+  font-size: 0.9rem;
+  color: #b91c7c;
+  font-style: italic;
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Brush Script MT', cursive, Arial, sans-serif;
+  animation: gentleGlow 2.5s ease-in-out infinite;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes gentleGlow {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 182, 193, 0.7);
+  animation: float 6s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d63384;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(255, 182, 193, 0.5);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.8);
+}
+
+.bubble.popped {
+  animation: pop 0.6s ease-out forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.phrase-reveal {
+  position: fixed;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #b91c7c;
+  font-weight: bold;
+  animation: floatingPhrase 8s linear forwards;
+  z-index: 1000;
+  text-align: center;
+  min-width: 120px;
+  pointer-events: none;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9),
+    -1px -1px 2px rgba(255, 255, 255, 0.7), 1px 1px 6px rgba(185, 28, 124, 0.3);
+}
+
+@keyframes floatingPhrase {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) rotate(-3deg);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(0.9) rotate(15deg) translateY(-70vh);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7) rotate(20deg) translateY(-80vh);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.bubble.small {
+  width: 40px;
+  height: 40px;
+  font-size: 0.6rem;
+}
+
+.bubble.medium {
+  width: 60px;
+  height: 60px;
+  font-size: 0.7rem;
+}
+
+.bubble.large {
+  width: 80px;
+  height: 80px;
+  font-size: 0.8rem;
+}
+
+.bubble.empty {
+  background: rgba(255, 220, 225, 0.6);
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .love-letter {
+    width: 350px;
+    height: 280px;
+  }
+
+  .heart {
+    font-size: 4.5rem;
+  }
+
+  .birthday-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+
+  .from-signature {
+    font-size: 1.1rem;
+    margin-top: 12px;
+  }
+
+  .phrase-reveal {
+    font-size: 1.4rem;
+  }
+
+  .bubble.small {
+    width: 45px;
+    height: 45px;
+    font-size: 0.7rem;
+  }
+
+  .bubble.medium {
+    width: 70px;
+    height: 70px;
+    font-size: 0.8rem;
+  }
+
+  .bubble.large {
+    width: 90px;
+    height: 90px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .love-letter {
+    width: 320px;
+    height: 260px;
+  }
+
+  .heart {
+    font-size: 4.2rem;
+  }
+
+  .birthday-title {
+    font-size: 1.3rem;
+    margin-bottom: 11px;
+  }
+
+  .from-signature {
+    font-size: 1rem;
+    margin-top: 11px;
+  }
+
+  .phrase-reveal {
+    font-size: 1.3rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .love-letter {
+    width: 280px;
+    height: 230px;
+  }
+
+  .heart {
+    font-size: 3.5rem;
+  }
+
+  .birthday-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .from-signature {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .phrase-reveal {
+    font-size: 1.1rem;
+  }
+
+  .bubble.small {
+    width: 38px;
+    height: 38px;
+    font-size: 0.6rem;
+  }
+
+  .bubble.medium {
+    width: 58px;
+    height: 58px;
+    font-size: 0.7rem;
+  }
+
+  .bubble.large {
+    width: 75px;
+    height: 75px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 576px) and (max-width: 767px) {
+  .love-letter {
+    width: 250px;
+    height: 200px;
+  }
+
+  .heart {
+    font-size: 3rem;
+  }
+
+  .birthday-title {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .from-signature {
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+
+  .phrase-reveal {
+    font-size: 1rem;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.9),
+      -1px -1px 2px rgba(255, 255, 255, 0.7),
+      1px 1px 4px rgba(185, 28, 124, 0.3);
+  }
+
+  .bubble.small {
+    width: 35px;
+    height: 35px;
+    font-size: 0.5rem;
+  }
+
+  .bubble.medium {
+    width: 50px;
+    height: 50px;
+    font-size: 0.6rem;
+  }
+
+  .bubble.large {
+    width: 65px;
+    height: 65px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile Medium */
+@media (min-width: 480px) and (max-width: 575px) {
+  .love-letter {
+    width: 220px;
+    height: 180px;
+  }
+
+  .heart {
+    font-size: 2.7rem;
+  }
+
+  .birthday-title {
+    font-size: 0.95rem;
+    margin-bottom: 7px;
+  }
+
+  .from-signature {
+    font-size: 0.75rem;
+    margin-top: 7px;
+  }
+
+  .phrase-reveal {
+    font-size: 0.95rem;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.9),
+      -1px -1px 2px rgba(255, 255, 255, 0.7),
+      1px 1px 4px rgba(185, 28, 124, 0.3);
+  }
+
+  .bubble.small {
+    width: 32px;
+    height: 32px;
+    font-size: 0.45rem;
+  }
+
+  .bubble.medium {
+    width: 45px;
+    height: 45px;
+    font-size: 0.55rem;
+  }
+
+  .bubble.large {
+    width: 58px;
+    height: 58px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 479px) {
+  .love-letter {
+    width: 200px;
+    height: 170px;
+  }
+
+  .heart {
+    font-size: 2.5rem;
+  }
+
+  .birthday-title {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .from-signature {
+    font-size: 0.7rem;
+    margin-top: 6px;
+  }
+
+  .phrase-reveal {
+    font-size: 0.9rem;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.9),
+      -1px -1px 2px rgba(255, 255, 255, 0.7),
+      1px 1px 4px rgba(185, 28, 124, 0.3);
+  }
+
+  .bubble.small {
+    width: 30px;
+    height: 30px;
+    font-size: 0.4rem;
+  }
+
+  .bubble.medium {
+    width: 42px;
+    height: 42px;
+    font-size: 0.5rem;
+  }
+
+  .bubble.large {
+    width: 55px;
+    height: 55px;
+    font-size: 0.6rem;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 320px) {
+  .love-letter {
+    width: 180px;
+    height: 150px;
+    padding: 15px;
+  }
+
+  .heart {
+    font-size: 2.2rem;
+  }
+
+  .birthday-title {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+
+  .from-signature {
+    font-size: 0.65rem;
+    margin-top: 5px;
+  }
+
+  .phrase-reveal {
+    font-size: 0.8rem;
+    min-width: 100px;
+  }
+
+  .bubble.small {
+    width: 28px;
+    height: 28px;
+    font-size: 0.35rem;
+  }
+
+  .bubble.medium {
+    width: 38px;
+    height: 38px;
+    font-size: 0.45rem;
+  }
+
+  .bubble.large {
+    width: 50px;
+    height: 50px;
+    font-size: 0.55rem;
+  }
+}
+
+/* Landscape Orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+  .love-letter {
+    width: 250px;
+    height: 160px;
+  }
+
+  .heart {
+    font-size: 2.5rem;
+  }
+
+  .birthday-title {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .from-signature {
+    font-size: 0.75rem;
+    margin-top: 5px;
+  }
+
+  .phrase-reveal {
+    font-size: 0.9rem;
+  }
+
+  .bubble.small {
+    width: 30px;
+    height: 30px;
+  }
+
+  .bubble.medium {
+    width: 42px;
+    height: 42px;
+  }
+
+  .bubble.large {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .birthday-title,
+  .from-signature {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .phrase-reveal {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .heart {
+    animation: none;
+  }
+
+  .birthday-title,
+  .from-signature {
+    animation: none;
+  }
+
+  .phrase-reveal {
+    animation: none;
+    opacity: 1;
+  }
+
+  .bubble {
+    animation: none;
+  }
+}
